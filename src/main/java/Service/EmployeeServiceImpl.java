@@ -18,7 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee add(String firstName, String lastName) {
+    public Employee add(String firstName, String lastName) throws EmployeeAlreadyAddedException {
         Employee employee = new Employee(firstName, lastName);
         if (employeeList.contains(employee)) {
             throw new EmployeeAlreadyAddedException();
@@ -28,7 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee remove(String firstName, String lastName) {
+    public Employee remove(String firstName, String lastName) throws EmployeeAlreadyAddedException {
         Employee employee = new Employee(firstName, lastName);
         if (employeeList.contains(employee)) {
             employeeList.remove(employee);
@@ -38,7 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee find(String firstName, String lastName) {
+    public Employee find(String firstName, String lastName) throws EmployeeAlreadyAddedException {
         Employee employee = new Employee(firstName, lastName);
 
         if (employeeList.contains(employee)) {
