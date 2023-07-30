@@ -25,14 +25,14 @@ public class EmployeeService {
     public Employee findEmployee(String firstName,String lastName){
         var emp = employee.get((makeKey(firstName,lastName));
         if (emp == null ){
-            throw new Exception.EmployeeNotFoundException();
+            throw new EmployeeNotFoundException();
         }
         return emp;
     }
     public boolean removeEmployee(String firstName,String lastName){
         Employee removed = employee.remove(makeKey(firstName,lastName));
         if (removed==null){
-            throw new Exception.EmployeeNotFoundException();
+            throw new EmployeeNotFoundException();
         }
         return true;
     }
