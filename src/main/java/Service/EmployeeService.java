@@ -12,4 +12,6 @@ public interface EmployeeService {
     Employee find(String firstName, String lastName) throws EmployeeAlreadyAddedException;
 
     Collection<Employee> findAll();
+
+    Collection<Object> getAll();
 }
