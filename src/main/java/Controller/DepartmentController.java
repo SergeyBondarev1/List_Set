@@ -1,10 +1,15 @@
 package Controller;
 
 import Service.DepartmentService;
+import com.example.model.Employee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/department")
@@ -16,11 +21,19 @@ public class DepartmentController {
     }
 
     @GetMapping("max-salary")
-    public double max (@RequestParam int departmentId){
-        return 0;
+    public Employee max (@RequestParam int departmentId){
+        return service.max(departmentId);
     }
-    @GetMapping("min-salary")
-    public double min (@RequestParam int departmentId){
-        return 0;
+    @GetMapping("/min-salary")
+    public Employee min(@RequestParam int departmentId) {
+        return service.min(departmentId);
+    }
+    @GetMapping(value = "/all", params = "departmentId")
+    public Collection<Employee> allByDept(@RequestParam int departmentId) {
+        return service.allByDept(departmentId);
+    }
+    @GetMapping("/all")
+    public Map<Integer, List<Employee>> all() {
+        return service.all();
     }
 }

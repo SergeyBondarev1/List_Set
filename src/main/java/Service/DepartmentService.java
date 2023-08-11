@@ -5,6 +5,7 @@ import com.example.model.Employee;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,6 +46,10 @@ public class DepartmentService {
                 .collect(Collectors.groupingBy(Employee::getDepartment));
 
 
+    }
+
+    public Collection<Employee> allByDept(int departmentId) {
+        return null;
     }
 }
 
