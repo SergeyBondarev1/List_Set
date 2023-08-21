@@ -12,9 +12,9 @@ import static com.sun.java.util.jar.pack.Attribute.Layout.makeKey;
 public class EmployeeService {
     private static final int SIZE = 10;
     public final Map <String, Employee> employee = new HashMap<>();
-    public void addEmployee(String firstName, String lastName){
+    public void addEmployee(String firstName, String lastName) throws EmployeeAlreadyAddedException {
         if (employee.size()==SIZE){
-            throw new Exception.EmployeeAlreadyAddedException();
+            throw new EmployeeAlreadyAddedException();
         }
         var key = makeKey (firstName, lastName);
         if (employee.containsKey(key)) {
@@ -22,17 +22,17 @@ public class EmployeeService {
         }
         employee.put(key,new Employee(firstName,lastName));
     }
-    public Employee findEmployee(String firstName,String lastName){
+    public Employee findEmployee(String firstName,String lastName) throws EmployeeNotFoundException {
         var emp = employee.get((makeKey(firstName,lastName));
         if (emp == null ){
-            throw new Exception.EmployeeNotFoundException();
+            throw new EmployeeNotFoundException();
         }
         return emp;
     }
-    public boolean removeEmployee(String firstName,String lastName){
+    public boolean removeEmployee(String firstName,String lastName) throws EmployeeNotFoundException {
         Employee removed = employee.remove(makeKey(firstName,lastName));
         if (removed==null){
-            throw new Exception.EmployeeNotFoundException();
+            throw new EmployeeNotFoundException();
         }
         return true;
     }
