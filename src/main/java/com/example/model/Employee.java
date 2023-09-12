@@ -5,12 +5,29 @@ import java.util.Objects;
 public class Employee {
     private final String firstName;
     private final String lastName;
+    private double Salary;
+    private int deptId;
 
-    public Employee(String firstName, String lastName) {
+    public double getSalary() {
+        return Salary;
+    }
+
+    public void setSalary(double salary) {
+        Salary = salary;
+    }
+
+    public int getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(int deptId) {
+        this.deptId = deptId;
+    }
+
+    public Employee(String firstName, String lastName, double Salary, int deptId) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
     public String getFirstName() {
         return firstName;
     }
@@ -18,8 +35,7 @@ public class Employee {
     public String getLastName() {
         return lastName;
     }
-
-    @Override
+        @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
