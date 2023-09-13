@@ -50,13 +50,27 @@ class DepartmentServiceTest {
         Assertions.assertThat(departmentService.minSalary(3)).isEqualTo(5d);
     }
     @Test
-    void testWhenEmployeesIsEmpty() {
+    void testWhenEmployeesIsEmptyMaxSalary() {
         when(employeeService.getAll()).thenReturn(Collections.emptyList());
-        Assertions.assertThatThrownBy(() -> departmentService.minSalary(1))
-                .isInstanceOf(EmployeeNotFoundException.class);
         Assertions.assertThatThrownBy(() -> departmentService.maxSalary(1))
                 .isInstanceOf(EmployeeNotFoundException.class);
+
+    }
+    @Test
+    void testWhenEmployeesIsEmptyMinSalary() {
+        when(employeeService.getAll()).thenReturn(Collections.emptyList());
+     Assertions.assertThatThrownBy(() -> departmentService.minSalary(1))
+            .isInstanceOf(EmployeeNotFoundException.class);
+}
+
+    @Test
+    void testWhenEmployeesIsEmptyMinSalarySum() {
+        when(employeeService.getAll()).thenReturn(Collections.emptyList());
         Assertions.assertThat(departmentService.sum(1)).isEqualTo(0d);
+    }
+
+    @Test
+    void name() {
     }
 
     @Test

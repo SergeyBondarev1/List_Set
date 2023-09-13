@@ -24,7 +24,7 @@ public class EmployeeService {
         employee.put(key,new Employee(capitalize(firstName),capitalize(lastName), salary, departmentId));
     }
     public Employee findEmployee(String firstName,String lastName) throws EmployeeNotFoundException {
-        var emp = employee.get((makeKey(firstName,lastName));
+        var emp = employee.get((makeKey(firstName,lastName)):
         if (emp == null ){
             throw new EmployeeNotFoundException();
         }

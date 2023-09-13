@@ -8,7 +8,7 @@ import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EmployeeControllerTest {
+class EmployeeServiceTest {
     EmployeeService employeeService = new EmployeeService();
     @Test
     void testAdd() {
@@ -61,5 +61,10 @@ class EmployeeControllerTest {
         employeeService.addEmployee("test","testtest",100,1);
         employeeService.addEmployee("test1","testtest1",-100,1);
         employeeService.addEmployee("test2","testtest2",100,-1);
+        var all = employeeService.getAll();
+        assertEquals(3,all.size());
+        assertTrue(all.contains(new Employee("test_1","testtest1",100,1)));
+        assertTrue(all.contains(new Employee("test_2","testtest2",100,1)));
+        assertTrue(all.contains(new Employee("test_3","testtest3",100,1)));
     }
 }
